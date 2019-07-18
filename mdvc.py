@@ -13,7 +13,10 @@ class Formula(object):
 
 	def formulaNameList(self):
 		'''Returns a list of all the names in a formula.'''
-		return re.findall('[a-zA-Z_][a-zA-Z0-9_]+', self.formula)
+		return re.findall('[a-zA-Z_][a-zA-Z0-9_]+|[a-zA-Z]', self.formula)
+
+	def clearResult(self):
+		self.result = 0
 
 	def varNameList(self):
 		'''Returns a list of all variables names.'''
@@ -41,7 +44,7 @@ class Formula(object):
 			self.result = self.integral(self.result)
 			return True
 		except Exception as e:
-			print('Execution failed.')
+			print(e)
 
 	def integral(self, update):
 		'''Removes trailing zeros from a number.'''
@@ -51,6 +54,7 @@ class Formula(object):
 	
 	def testFormula(self):
 		'''Test runs a given formula.'''
+		self.clearResult()
 		self.applyFormula(self.formula)
 		print(self.result)
 
@@ -58,7 +62,9 @@ class Formula(object):
 		'''Executes the formula return from formedFormula() function.'''
 		if self.namesExists()[0]:
 			try:
-				self.executeFormula(self.formedFormula(formula))
+				if not self.executeFormula(self.formedFormula(formula)):
+					print('Error.')
+					return False
 				return True
 			except Exception as e:
 				print('Bad formula.', e)

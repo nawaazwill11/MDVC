@@ -336,6 +336,9 @@ class Emulator(Variable, Formula):
 					print('Invalid syntax')
 			elif re.match('^f',command):
 				self.command = command
+				self.variant = command[0]
+				self.operator = command[2]
+				self.formula = command[4:].strip()
 				if re.match('^f', command):
 					if re.match('^f\sv\s>\s[a-zA-Z_][a-zA-Z0-9_]+', command):
 						self.assignFtoV()

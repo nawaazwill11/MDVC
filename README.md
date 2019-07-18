@@ -1,3 +1,3 @@
 # MDVC
-A simple program for simple arithmetic calculation where you can add variables and formulas, remove them, store and load from them on the go. 
-Very basic. Looking for better ideas and suggestion in improving this script.
+A simple tool for simple arithmetic calculation where you can add variables and formulas, remove them, store and load them from a file, on the go. 
+The tool is very basic at present. Looking for better ideas and suggestion for improving the script.
